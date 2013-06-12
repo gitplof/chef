@@ -1,0 +1,13 @@
+{
+    "name": "ec2",
+    "json_class": "Chef::Role",
+    "description": "",
+    "chef_type": "role",
+    "run_list": ["wonderland::ec2"],
+    "default_attributes": {
+        "user": "ubuntu",
+        "group": "ubuntu",
+        "rootpath": "/var/web/devel",
+        "giturl": "https://github.com/PortZart/devel"
+    }
+}

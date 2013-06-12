@@ -1,0 +1,34 @@
+{
+  "suggestions": {
+    "monit": ">= 0.0.0"
+  },
+  "license": "Apache 2.0",
+  "description": "Installs/Configures components of the celery distributed task queue system",
+  "recipes": {
+  },
+  "groupings": {
+  },
+  "conflicting": {
+  },
+  "dependencies": {
+    "runit": ">= 0.0.0",
+    "python": ">= 0.0.0"
+  },
+  "maintainer_email": "cookbooks@needle.com",
+  "maintainer": "Needle Inc.",
+  "attributes": {
+  },
+  "name": "celery",
+  "recommendations": {
+  },
+  "platforms": {
+    "ubuntu": ">= 0.0.0",
+    "debian": ">= 0.0.0"
+  },
+  "replacing": {
+  },
+  "providing": {
+  },
+  "long_description": "### Description\n\nThis cookbook provides definitions which can be used to set up [Celery task queue](http://www.celeryproject.org) processes. These definitions are intended to be used as part of your own application cookbook stack; you won't get a lot of use out of them without a task broker (e.g. MongoDB or AMQP. We use RabbitMQ.) and whatever else your app requires to run.\n\n### Requirements\n\nDepends on the following cookbooks:\n\n* [Opscode's `python` cookbook](http://community.opscode.com/cookbooks/python)\n* [Our fork of the `supervisord` cookbook](https://github.com/needle-cookbooks/chef-supervisord/tree/needle)\n\n### Attributes\n\n`celery.version` - desired version of celery, defaults to nil (installs latest version)\n`celerymon.version` - desired version of celery, defaults to nil (installs latest version)\n\n### Defintions\n\nThis cookbook provides the following definitions:\n\n* `celery_worker`\n* `celery_beat`\n* `celery_mon`\n* `celery_cam`\n\nEach definition configures an instance of a Celery process, managed by [supervisord](http://supervisord.org).\n\nAll of these definitions accept optional parameters for `django`, `virtualenv` and `logfile`. The `django` and `virtualenv` parameters default to false, and the `logfile` will try to generate a reasonable default using `/var/log/celery` as the base path.\n\nThe `celery_worker`, `celery_beat` and `celery_cam` definitions accept an `options` parameter which can be used to set command line flags that the processes are run with. The `celery_mon` definition does not accept this parameter.\n\n### Usage\n\n```\ninclude_recipe 'celery'\n\ndjango_path = '/path/to/myapp/dir' # i.e. where manage.py lives\nvirtualenv_path = '/path/to/virtualenv'\n\ncelery_opts = { \"broker\" => \"amqp://guest:guest@localhost/%%2Fmyappvhost\" }\n\nceleryd_opts = {\n  # have to escape the % in the vhost name with another % for supervisord\n  \"broker\" => \"amqp://guest:guest@localhost/%%2Fmyappvhost\", \n  \"concurrency\" => 10,\n  \"queues\" => \"celery\"\n}\n\ncelery_worker \"myapp\" do\n  django django_path\n  virtualenv\n  options celeryd_opts\nend\n\ncelery_beat \"myapp\" do\n  django django_path\n  virtualenv virtualenv_path\n  options celery_opts\nend\n\ncelery_mon \"myapp\" do\n  django django_path\n  virtualenv virtualenv_path\nend\n\ncelery_cam \"myapp\" do\n  django django_path\n  virtualenv virtualenv_path\n  options celery_opts\nend\n\n```\nAssuming your virtualenv, app, task broker and their dependencies are in place, this recipe would install and configure all these components on one box where the task broker is already running. \n\nThe hash of options passed to `celery_worker` would configure a `celeryd` process running with the flags `--broker=amqp://guest:guest@localhost/ --concurrency=10 --queues=celery`.\n\n### Changelog\n\n* 0.1.0 - first public release, definitions for celeryd, celerybeat, celerycam and celerymon\n* Darkness and strife",
+  "version": "0.1.2"
+}

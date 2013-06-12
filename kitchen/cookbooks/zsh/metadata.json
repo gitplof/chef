@@ -1,0 +1,37 @@
+{
+  "suggestions": {
+  },
+  "license": "Apache 2.0",
+  "description": "Installs zsh",
+  "recipes": {
+    "zsh": "Installs zsh"
+  },
+  "groupings": {
+  },
+  "conflicting": {
+  },
+  "dependencies": {
+  },
+  "maintainer_email": "cookbooks@opscode.com",
+  "maintainer": "Opscode, Inc.",
+  "attributes": {
+  },
+  "name": "zsh",
+  "recommendations": {
+  },
+  "platforms": {
+    "redhat": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "scientific": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0",
+    "fedora": ">= 0.0.0",
+    "amazon": ">= 0.0.0",
+    "debian": ">= 0.0.0"
+  },
+  "replacing": {
+  },
+  "providing": {
+  },
+  "long_description": "",
+  "version": "1.0.0"
+}

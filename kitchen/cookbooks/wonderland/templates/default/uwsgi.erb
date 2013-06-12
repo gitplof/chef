@@ -1,0 +1,11 @@
+[uwsgi]
+vhost = true
+plugins = python
+socket = 127.0.0.1:9001
+master = true
+enable-threads = true
+processes = 2
+wsgi-file = wsgi
+home = <%= node[:virtualenvs] %>/tz
+chdir = <%= node[:projectpath] %>
+touch-reload = <%= node[:projectpath] %>/reload

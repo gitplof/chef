@@ -1,0 +1,7 @@
+{
+    "ipaddress": "10.209.136.105",
+    "name": "ec2root",
+    "run_list": [
+        "role[wonderland]"
+    ]
+}

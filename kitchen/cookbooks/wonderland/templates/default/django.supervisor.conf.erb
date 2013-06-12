@@ -1,0 +1,9 @@
+[program:<%= @site[:name] %>]
+command=<%= node[:virtualenvs] %>/tz/bin/gunicorn_django -c <%= @site[:gunipath] %>
+directory=<%= @site[:projectpath] %>
+redirect_stderr=true
+stdout_logfile=/var/log/supervisord/<%= @site[:name] %>.log
+user=nobody
+autostart=false
+autorestart=false
+redirect_stderr=True

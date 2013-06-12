@@ -1,0 +1,45 @@
+LOCAL_SETTINGS = True
+from settings import *
+
+# EMAIL_DEBUG = DEBUG
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'testing@portzar.com'
+DEFAULT_FROM_EMAIL = 'testing@portzar.com'
+EMAIL_HOST_PASSWORD = 'tUcFGL03bTuHU2OsCXHV'
+
+# Rosetta 
+ROSETTA_STORAGE_CLASS = 'rosetta.storage.CacheRosettaStorage'
+ROSETTA_EXCLUDED_APPLICATIONS = ('debug_toolbar', 'rosetta',)
+
+# Recpatcha
+RECAPTCHA_PUBLIC_KEY = '6Lf7UNYSAAAAABT4Na8vcNdtYk9CoeVB4YKcNCFj'
+RECAPTCHA_PRIVATE_KEY = '6Lf7UNYSAAAAAIvknu5gKJuhkGTBQZVPZ03A1fd4'
+RECAPTCHA_USE_SSL = True
+
+# Celery
+REDIS_CONNECT_RETRY = True
+CELERY_SEND_EVENTS = True
+CELERY_RESULT_BACKEND='redis'
+CELERY_TASK_RESULT_EXPIRES =  10
+CELERYBEAT_SCHEDULER="djcelery.schedulers.DatabaseScheduler"
+#CELERY_IMPORTS = ('...')
+BROKER_URL = 'redis://localhost:6379/0'
+import djcelery
+djcelery.setup_loader()
+
+# Sentry
+# SENTRY_KEY = 'RH2esMqd53L4TbniMSosQwNpegw9Qfe4vGxlFp8Pg4MB64bYX1BXlg=='
+# SENTRY_DSN = 'http://0c0b56805bf6486e983f39e211f5b447:73ec3544f6d84a34857ed9d42617d3ab@127.0.0.1:9001/3'
+
+DATABASES['default']['PASSWORD'] = '<%= node[:postgresql][:password][:postgres] %>'
+DATABASES['history_db']['PASSWORD'] = '<%= node[:postgresql][:password][:postgres] %>'
+
+if os.environ.has_key('DEFAULT_PASSWORD'):
+    DATABASES['default']['PASSWORD'] = os.environ['DEFAULT_PASSWORD']
+
+if TESTING:
+    del DATABASES['history_db']
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+

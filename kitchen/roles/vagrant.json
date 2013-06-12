@@ -1,0 +1,63 @@
+{
+    "name": "vagrant",
+    "json_class": "Chef::Role",
+    "description": "",
+    "chef_type": "role",
+    "run_list": ["wonderland::default"],
+    "default_attributes": {
+        "user": "vagrant",
+        "group": "deploy",
+        "virtualenvs": "/home/vagrant/.virtualenvs",
+        "dropboxpath": "/home/vagrant",
+        "activeenv": "tz",
+        "rootpath": "/vagrant",
+        "bootpath": "/vagrant/src",
+        "projectpath": "/vagrant/src",
+        "projectenv": "tz",
+        "deploypath": "/vagrant/src/seed/deploy",
+        "systemnode": false,
+        "nodeenv": false,
+        "postgis": false,
+        "postgresql": {
+            "password": {
+                "postgres": "1qaz2wsx"
+            }
+        },
+        "oh_my_zsh": {
+            "users": [
+                {
+                    "login": "vagrant",
+                    "theme": "robbyrussell",
+                    "plugins": ["git", "gem"]
+                }
+            ]
+        },
+        "users": [
+            {
+                "name": "alice",
+                "key": "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEArIzjs/UHIogXxUG1jHGuZF98O9fPuGwovaHzGGVm061XeeszNguCXAVXMYK58zrYeaJSPG5/LbdiU9/cRXn+wYiniMTUxQoVnAJ9dMScO46rvsL+oR/90FAuv7rIaYrKTGKhCL2G2WEYduIqRc3CjcF0FsGoY7pYOTzLniKHNJ0z6N4OBrvhx/SDdqb86EuJqgJtMkl9vsjtBjsi27FPc8cOEMZEQWAvMK4NVQgeQvuNW86zl4vwEsjEUcI3Q7T790cofZGyKFbbhgxR5ew5c5hWgidDRruwEVdqhdfnzxHiAWJpd7G2QiHo2hrysh9K4mW56w2OFzs/i8GwBeV2fw== me@alice.ca"
+            }
+        ],
+        "databases": [
+            {
+                "name": "portzar_db",
+                "engine": "postgresql_psycopg2",
+                "template": "template0"
+            },{
+                "name": "history_db",
+                "engine": "postgresql_psycopg2",
+                "template": "template0"
+            }
+        ],
+        "nginxsites": [
+            {
+                "name": "portzar",
+                "domain": "demo.portzar.com",
+                "projectpath": "/vagrant/src",
+                "staticpath": "/vagrant/src/seed/static",
+                "gunipath": "/vagrant/src/seed/deploy/gunicorn.conf.py",
+                "port": "9001"
+            }
+        ]   
+    }
+}

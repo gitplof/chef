@@ -1,0 +1,33 @@
+{
+  "suggestions": {
+  },
+  "license": "Apache 2.0",
+  "description": "Installs supervisor and provides resources to configure services",
+  "recipes": {
+    "supervisor": "Installs and configures supervisord"
+  },
+  "groupings": {
+  },
+  "conflicting": {
+  },
+  "dependencies": {
+    "python": ">= 0.0.0"
+  },
+  "maintainer_email": "noah@opscode.com",
+  "maintainer": "Noah Kantrowitz",
+  "attributes": {
+  },
+  "name": "supervisor",
+  "recommendations": {
+  },
+  "platforms": {
+    "ubuntu": ">= 0.0.0",
+    "debian": ">= 0.0.0"
+  },
+  "replacing": {
+  },
+  "providing": {
+  },
+  "long_description": "",
+  "version": "0.4.1"
+}

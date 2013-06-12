@@ -1,0 +1,19 @@
+server{
+  listen 80;
+  server_name phpgadmin.com;
+  access_log /var/log/phppgadmin.access.log;
+  error_log /var/log/phppgadmin.error.log;
+
+  root /usr/share/phppgadmin;
+  
+  location / {
+    index index.php;
+  }
+
+  location ~ \.php$ {
+      fastcgi_pass    127.0.0.1:9000;
+      fastcgi_index   index.php;
+      fastcgi_param   SCRIPT_FILENAME /usr/share/phppgadmin$fastcgi_script_name;
+      include         fastcgi_params;
+  }
+}

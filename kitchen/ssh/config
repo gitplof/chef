@@ -1,0 +1,15 @@
+Host miette
+HostName 178.79.180.52
+User root
+IdentityFile ~/.ssh/id_rsa
+Port 1618
+
+Host ec2
+HostName 176.34.111.23
+User ubuntu
+IdentityFile ssh/ec2.pem
+
+Host ec2root
+HostName 176.34.111.23
+User ubuntu
+IdentityFile ssh/ec2.pem

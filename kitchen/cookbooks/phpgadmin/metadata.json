@@ -1,0 +1,30 @@
+{
+  "suggestions": {
+  },
+  "license": "Apache 2.0",
+  "description": "Contains a recipe for installing PhpPgAdmin",
+  "recipes": {
+    "phppgadmin": "Install phppgadmin and configure a virtual host for it."
+  },
+  "groupings": {
+  },
+  "conflicting": {
+  },
+  "dependencies": {
+  },
+  "maintainer_email": "arne.brasseur@gmail.com",
+  "maintainer": "Arne Brasseur - Ren Dao Solutions, bvba",
+  "attributes": {
+  },
+  "name": "phpgadmin",
+  "recommendations": {
+  },
+  "platforms": {
+  },
+  "replacing": {
+  },
+  "providing": {
+  },
+  "long_description": "Description\n====\n\nChef cookbook that installs PhpPgAdmin. At the moment very basic and only tested with Ubuntu 12.04 + nginx.\n\nRequirements\n============\n\n## Platforms\n* Debian, Ubuntu\n\nTested on:\n\n* Debian 7.0 Wheezy\n* Ubuntu 12.04\n\n\nAttributes\n==========\n",
+  "version": "0.1.0"
+}
